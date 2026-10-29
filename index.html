@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
+    
+    <!-- تحسينات محركات البحث (SEO) ومشاركة الرابط -->
+    <title>الباحث القرآني — محرك بحث متقدم في القرآن الكريم</title>
+    <meta name="description" content="تطبيق مجاني ومفتوح المصدر للبحث الذكي في القرآن الكريم، مع التلاوة الصوتية، معاني الكلمات، وإحصائيات دقيقة." />
+    <meta name="theme-color" content="#d4af37" /> <!-- لون شريط المتصفح ليتطابق مع هوية التطبيق -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- تحميل خط Amiri مسبقاً لمنع ظهور النص بخط افتراضي ثم تغييره (Flash of Unstyled Text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style id="expo-reset">
+      /* إعادة ضبط أساسية متقدمة */
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fdfbf7; /* نفس لون خلفية التطبيق لمنع الوميض الأبيض */
+        -webkit-font-smoothing: antialiased; /* تحسين نعومة الخطوط */
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      #root {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex: 1;
+      }
+
+      /* ==========================================
+         شاشة تحميل أنيقة (Splash Screen)
+         تظهر فوراً وتختفي بسلاسة عند جاهزية التطبيق
+         ========================================== */
+      .splash-screen {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fdfbf7;
+        z-index: 9999;
+        transition: opacity 0.6s ease-out;
+      }
+      .splash-title {
+        font-family: 'Amiri', serif;
+        font-size: 32px;
+        color: #1a5276;
+        font-weight: bold;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+      }
+      .splash-loader {
+        width: 45px;
+        height: 45px;
+        border: 4px solid #e8f4f8;
+        border-top: 4px solid #d4af37; /* اللون الذهبي للتطبيق */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+
+  <body>
+    <!-- رسالة للمستخدمين الذين عطلوا JavaScript -->
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: 'Amiri', sans-serif; color: #c0392b;">
+        <h2>عذراً</h2>
+        <p>يجب تفعيل JavaScript في متصفحك لتشغيل هذا التطبيق.</p>
+      </div>
+    </noscript>
+    
+    <!-- شاشة التحميل الأنيقة -->
+    <div id="splash-screen" class="splash-screen">
+      <div class="splash-title">الباحث القرآني</div>
+      <div class="splash-loader"></div>
+    </div>
+
+    <!-- العنصر الجذري للتطبيق -->
+    <div id="root"></div>
+    
+    <!-- حزمة JavaScript الخاصة بـ Expo -->
+    <script src="/quran-search/_expo/static/js/web/index-f289a92a7ecb97ebc8339750d0b684cb.js" defer></script>
+    
+    <!-- سكريبت بسيط لإخفاء شاشة التحميل بسلاسة بمجرد جاهزية الصفحة -->
+    <script>
+      window.addEventListener('load', function() {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          // تأخير بسيط جداً لضمان أن تطبيق React قد بدأ بالرسم
+          setTimeout(() => {
+            splash.style.opacity = '0';
+            setTimeout(() => {
+              splash.remove(); // إزالة العنصر تماماً من DOM بعد انتهاء تأثير الاختفاء
+            }, 600);
+          }, 500);
+        }
+      });
+    </script>
+  </body>
+</html>
