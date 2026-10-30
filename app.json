@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "الباحث القرآني — محرك بحث متقدم في القرآن الكريم",
+    "slug": "QuranSearch",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE"
+      },
+      "package": "com.mohdexpo.QuranSearch"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "static",
+      "publicPath": "/quran-search/"
+    },
+    "experiments": {
+      "baseUrl": "/quran-search"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-splash-screen",
+      "expo-router"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "67561d8b-cae6-4b0c-af65-a87c1beb9998"
+      }
+    }
+  }
+}
